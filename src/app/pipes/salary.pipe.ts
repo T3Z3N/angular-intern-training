@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'salary',
-  standalone: true
+  standalone: true,
 })
 export class SalaryPipe implements PipeTransform {
   transform(value: number): string {

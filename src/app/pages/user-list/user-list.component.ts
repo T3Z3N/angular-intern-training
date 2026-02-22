@@ -9,29 +9,26 @@ import { UserService } from '../../services/user.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './user-list.component.html',
-  styleUrl:'./user-list.component.scss'
+  styleUrl: './user-list.component.scss',
 })
 export class UserListComponent {
-
   users$: Observable<any[]>;
   loading$ = of(true);
   error$ = of('');
-
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
   ) {
     this.users$ = this.userService.getUsers().pipe(
-      map(res => res.users),
+      map((res) => res.users),
       catchError(() => {
         this.error$ = of('Failed to load users');
         return of([]);
       }),
-      startWith([])
+      startWith([]),
     );
   }
-
-  openUser(id: number): void {
+  navigateToDetails(id: number): void {
     this.router.navigate(['/user', id]);
   }
 }

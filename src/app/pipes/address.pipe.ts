@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'address',
-  standalone: true
+  standalone: true,
 })
 export class AddressPipe implements PipeTransform {
   transform(address: any): string {

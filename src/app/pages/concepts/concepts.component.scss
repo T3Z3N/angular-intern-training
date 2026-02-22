@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  overflow-y: auto;
+  min-height: 100%;
+}
+
+.concepts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+
+  &__card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  &__card-title {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__card-desc {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 6px;
+  }
+
+  &__card-why {
+    font-size: 13px;
+    color: #555;
+    margin: 6px 0;
+  }
+
+  &__card-meta {
+    font-size: 12px;
+    color: #777;
+    margin-top: 4px;
+  }
+
+  &__card-code {
+    background: #0f172a;
+    color: #22c55e;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 12px;
+    overflow-x: auto;
+    line-height: 1.5;
+  }
+}

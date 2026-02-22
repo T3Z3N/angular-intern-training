@@ -1,20 +1,21 @@
 <div class="layout">
+  <aside class="sidebar">
+    <h3>Users</h3>
 
-    <aside class="sidebar">
-      <h3>Users</h3>
-  
-      <a
-        routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="menu-item"
-      >
-        User List
-      </a>
-    </aside>
-  
-    <main class="content">
-      <router-outlet></router-outlet>
-    </main>
-  
-  </div>
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="menu-item"
+    >
+      User List
+    </a>
+    <a routerLink="/concepts" routerLinkActive="active" class="menu-item">
+      Concepts
+    </a>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,44 +1,44 @@
 .layout {
-    display: flex;
-    height: 100vh;           // full viewport
-    overflow: hidden;        // prevent body scroll
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 240px;
-    background: #0b1a33;
-    color: white;
-    padding: 20px;
-    flex-shrink: 0;
-  }
-  
-  /* Menu item */
-  .menu-item {
-    display: block;
-    padding: 12px 16px;
-    border-radius: 8px;
-    color: #cbd5e1;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: 0.2s;
-  }
-  
-  .menu-item:hover {
-    background: rgba(255,255,255,0.08);
-  }
-  
-  /* ⭐ ACTIVE highlight */
-  .menu-item.active {
-    background: #2563eb;
-    color: white;
-    font-weight: 600;
-  }
-  
-  /* Content area scroll */
-  .content {
-    flex: 1;
-    overflow-y: auto;      // ⭐ THIS makes page scrollable
-    padding: 30px;
-    background: #f1f5f9;
-  }
+  display: flex;
+  height: 100vh; // full viewport
+  overflow: hidden; // prevent body scroll
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: #0b1a33;
+  color: white;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+/* Menu item */
+.menu-item {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ⭐ ACTIVE highlight */
+.menu-item.active {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+/* Content area scroll */
+.content {
+  flex: 1;
+  overflow-y: auto; // ⭐ THIS makes page scrollable
+  padding: 30px;
+  background: #f1f5f9;
+}

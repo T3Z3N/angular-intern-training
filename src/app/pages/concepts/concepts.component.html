@@ -1,0 +1,13 @@
+<div class="concepts">
+  <div class="concepts__card" *ngFor="let c of concepts">
+    <h2 class="concepts__card-title">{{ c.title }}</h2>
+    <p class="concepts__card-desc">{{ c.description }}</p>
+    <p class="concepts__card-why"><strong>Why:</strong> {{ c.why }}</p>
+    <p class="concepts__card-meta"><strong>Where used:</strong> {{ c.file }}</p>
+    <p class="concepts__card-meta">
+      <strong>Lifecycle:</strong> {{ c.lifecycle }}
+    </p>
+
+    <pre class="concepts__card-code">{{ c.example }}</pre>
+  </div>
+</div>
