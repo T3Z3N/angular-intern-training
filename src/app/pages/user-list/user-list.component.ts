@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Observable, map, catchError, of, startWith } from 'rxjs';
 import { UserService } from '../../services/user.service';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-user-list',
@@ -12,21 +13,25 @@ import { UserService } from '../../services/user.service';
   styleUrl: './user-list.component.scss',
 })
 export class UserListComponent {
-  users$: Observable<any[]>;
+  // users$: Observable<any[]>;
+  users: User[] = [];
   loading$ = of(true);
   error$ = of('');
   constructor(
     private userService: UserService,
     private router: Router,
   ) {
-    this.users$ = this.userService.getUsers().pipe(
-      map((res) => res.users),
-      catchError(() => {
-        this.error$ = of('Failed to load users');
-        return of([]);
-      }),
-      startWith([]),
-    );
+    this.userService.getUsers().subscribe(users => {
+      this.users = users.users;
+    })
+    // this.users$ = this.userService.getUsers().pipe(
+    //   map((res) => res.users),
+    //   catchError(() => {
+    //     this.error$ = of('Failed to load users');
+    //     return of([]);
+    //   }),
+    //   startWith([]),
+    // );
   }
   navigateToDetails(id: number): void {
     this.router.navigate(['/user', id]);
