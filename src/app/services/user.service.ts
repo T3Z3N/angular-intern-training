@@ -9,12 +9,18 @@ import { User, UserListResponse } from '../interfaces/user.interface';
 export class UserService {
   private baseUrl = 'https://dummyjson.com/users';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /** Get all users */
-  getUsers(limit = 10, skip = 0): Observable<UserListResponse> {
-    return this.http.get<UserListResponse>(
-      `${this.baseUrl}?limit=${limit}&skip=${skip}`,
+  getUsers(search = '', limit = 10, skip = 0) {
+    if (search) {
+      return this.http.get<any>(
+        `https://dummyjson.com/users/search?q=${search}&limit=${limit}&skip=${skip}`
+      );
+    }
+
+    return this.http.get<any>(
+      `https://dummyjson.com/users?limit=${limit}&skip=${skip}`
     );
   }
 

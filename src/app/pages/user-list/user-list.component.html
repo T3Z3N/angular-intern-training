@@ -1,12 +1,5 @@
-<h2 class="title">User List</h2>
-<div *ngIf="users.length else loading" class="user-container">
-
-    <!-- <div
-    class="user-card"
-    *ngFor="let user of users$ | async"
-    (click)="navigateToDetails(user.id)"
-  > -->
-    
+<!-- <h2 class="title">User List</h2>
+<div *ngIf="users.length else loading" class="user-container">    
   <div
     class="user-card"
     *ngFor="let user of users"
@@ -22,4 +15,51 @@
 </div>
 <ng-template #loading>
 {{'Loading Users'}}
-</ng-template>
+</ng-template> -->
+
+<h2 class="title">User List</h2>
+
+<div class="search-wrapper">
+  <input
+    type="text"
+    [formControl]="searchControl"
+    placeholder="Search users..."
+    class="search-input"
+  />
+</div>
+
+<!-- Users -->
+<div *ngIf="users$ | async as users" class="user-container">
+
+  <div
+    class="user-card"
+    *ngFor="let user of users"
+    (click)="navigateToDetails(user.id)"
+  >
+    <img 
+      [src]="user.image || 'https://i.pravatar.cc/150'" 
+      class="avatar" 
+    />
+
+    <div class="info">
+      <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+      <p>{{ user.email }}</p>
+      <p>{{ user.phone }}</p>
+    </div>
+
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!users.length && !(loading$ | async)">
+    No users found.
+  </div>
+
+</div>
+
+<!-- Loading -->
+<div *ngIf="loading$ | async">Loading Users...</div>
+
+<!-- Error -->
+<div *ngIf="error$ | async as error" class="error">
+  {{ error }}
+</div>
