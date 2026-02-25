@@ -28,6 +28,14 @@
   />
 </div>
 
+<!-- Loading -->
+<div *ngIf="loading$ | async">Loading Users...</div>
+
+<!-- Error -->
+<div *ngIf="error$ | async as error" class="error">
+  {{ error }}
+</div>
+
 <!-- Users -->
 <div *ngIf="users$ | async as users" class="user-container">
 
@@ -54,12 +62,4 @@
     No users found.
   </div>
 
-</div>
-
-<!-- Loading -->
-<div *ngIf="loading$ | async">Loading Users...</div>
-
-<!-- Error -->
-<div *ngIf="error$ | async as error" class="error">
-  {{ error }}
 </div>

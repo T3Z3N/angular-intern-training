@@ -15,8 +15,8 @@ import { Observable, catchError, map, of, startWith, switchMap } from 'rxjs';
   styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent implements OnInit {
-  user?: User;
-  loading = true;
+  // user?: User;
+  // loading = true;
 
   user$!: Observable<User | null>;
   loading$!: Observable<boolean>;
@@ -25,7 +25,7 @@ export class UserDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // const id = Number(this.route.snapshot.paramMap.get('id'));
