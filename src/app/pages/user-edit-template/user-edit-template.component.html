@@ -1,0 +1,94 @@
+<div *ngIf="loading" class="loading">Loading...</div>
+
+<div *ngIf="!loading && user" class="edit-card">
+  <h2>Edit User (Template-driven)</h2>
+
+  <form #userForm="ngForm" (ngSubmit)="save(userForm)">
+    <!-- ================= BASIC INFO ================= -->
+
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        id="firstName"
+        type="text"
+        name="firstName"
+        [(ngModel)]="user.firstName"
+        required
+        #firstNameModel="ngModel"
+      />
+      <small *ngIf="firstNameModel.touched && firstNameModel.invalid">
+        First name is required
+      </small>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        id="lastName"
+        type="text"
+        name="lastName"
+        [(ngModel)]="user.lastName"
+        required
+        #lastNameModel="ngModel"
+      />
+      <small *ngIf="lastNameModel.touched && lastNameModel.invalid">
+        Last name is required
+      </small>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        [(ngModel)]="user.email"
+        required
+        email
+        #emailModel="ngModel"
+      />
+      <small *ngIf="emailModel.touched && emailModel.invalid">
+        <span *ngIf="emailModel.errors?.['required']">Email is required</span>
+        <span *ngIf="emailModel.errors?.['email']">Enter a valid email</span>
+      </small>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        id="phone"
+        type="text"
+        name="phone"
+        [(ngModel)]="user.phone"
+        required
+        #phoneModel="ngModel"
+      />
+      <small *ngIf="phoneModel.touched && phoneModel.invalid">
+        Phone is required
+      </small>
+    </div>
+
+    <!-- ================= ADDRESS SECTION ================= -->
+
+    <app-address-normal [address]="user.address"></app-address-normal>
+
+    <!-- ================= COMPANY SECTION ================= -->
+
+    <app-company-normal [company]="user.company"></app-company-normal>
+
+    <!-- ================= BUTTONS ================= -->
+
+    <div class="buttons">
+      <button type="submit" [disabled]="saving || userForm.invalid">
+        {{ saving ? 'Saving...' : 'Save' }}
+      </button>
+
+      <button type="button" class="cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,52 @@
+<div class="company-card">
+  <h3>Company Information (Template-driven)</h3>
+
+  <!-- Company Name -->
+  <div class="form-group">
+    <label for="companyNameNormal">Company Name</label>
+    <input
+      id="companyNameNormal"
+      type="text"
+      name="company_name"
+      [(ngModel)]="company.name"
+      required
+      #companyNameModel="ngModel"
+    />
+    <small *ngIf="companyNameModel.touched && companyNameModel.invalid">
+      Company name is required
+    </small>
+  </div>
+
+  <!-- Department -->
+  <div class="form-group">
+    <label for="departmentNormal">Department</label>
+    <input
+      id="departmentNormal"
+      type="text"
+      name="company_department"
+      [(ngModel)]="company.department"
+      required
+      #departmentModel="ngModel"
+    />
+    <small *ngIf="departmentModel.touched && departmentModel.invalid">
+      Department is required
+    </small>
+  </div>
+
+  <!-- Title -->
+  <div class="form-group">
+    <label for="titleNormal">Job Title</label>
+    <input
+      id="titleNormal"
+      type="text"
+      name="company_title"
+      [(ngModel)]="company.title"
+      required
+      #titleModel="ngModel"
+    />
+    <small *ngIf="titleModel.touched && titleModel.invalid">
+      Job title is required
+    </small>
+  </div>
+</div>
+

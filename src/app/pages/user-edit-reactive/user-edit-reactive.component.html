@@ -1,0 +1,64 @@
+<div *ngIf="loading" class="loading">Loading...</div>
+
+<div *ngIf="!loading" class="edit-card">
+  <h2>Edit User</h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <!-- ================= BASIC INFO ================= -->
+
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text" formControlName="firstName" />
+      <small *ngIf="f.firstName.touched && f.firstName.invalid">
+        First name is required
+      </small>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" formControlName="lastName" />
+      <small *ngIf="f.lastName.touched && f.lastName.invalid">
+        Last name is required
+      </small>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+      <small *ngIf="f.email.touched && f.email.invalid">
+        <span *ngIf="f.email.errors?.['required']"> Email is required </span>
+        <span *ngIf="f.email.errors?.['email']"> Enter a valid email </span>
+      </small>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" formControlName="phone" />
+      <small *ngIf="f.phone.touched && f.phone.invalid">
+        Phone is required
+      </small>
+    </div>
+
+    <!-- ================= ADDRESS SECTION ================= -->
+
+    <app-address [group]="form.controls.address"> </app-address>
+
+    <!-- ================= COMPANY SECTION ================= -->
+
+    <app-company [group]="form.controls.company"> </app-company>
+
+    <!-- ================= BUTTONS ================= -->
+
+    <div class="buttons">
+      <button type="submit" [disabled]="saving || form.invalid">
+        {{ saving ? "Saving..." : "Save" }}
+      </button>
+
+      <button type="button" class="cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

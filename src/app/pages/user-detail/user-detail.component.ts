@@ -20,6 +20,9 @@ export class UserDetailComponent implements OnInit {
 
   user$!: Observable<User | null>;
   loading$!: Observable<boolean>;
+  user?: User;
+  loading = true;
+  userId!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,9 +57,20 @@ export class UserDetailComponent implements OnInit {
     //     )
     //   )
     // );
+    this.userId = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.userService.getUserById(this.userId).subscribe((res) => {
+      this.user = res;
+      this.loading = false;
+    });
   }
 
   goBack() {
     this.router.navigate(['/users']);
+  }
+
+  editUser(id: number): void {
+    // this.router.navigate(['/users', id, 'edit-template-form']);
+    this.router.navigate(['/users', id, 'edit-reactive-form']);
   }
 }

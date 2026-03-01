@@ -28,4 +28,9 @@ export class UserService {
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/${id}`);
   }
+
+  /** Update user */
+  updateUser(id: number, data: any) {
+    return this.http.patch(`https://dummyjson.com/users/${id}`, data);
+  }
 }

@@ -1,0 +1,59 @@
+<div class="address-card">
+  <h3 class="section-title">Address Details (Template-driven)</h3>
+
+  <!-- Street -->
+  <div class="form-group">
+    <label>Street</label>
+    <input
+      type="text"
+      name="address_address"
+      [(ngModel)]="address.address"
+      placeholder="Street address"
+    />
+  </div>
+
+  <!-- City -->
+  <div class="form-group">
+    <label>City</label>
+    <input
+      type="text"
+      name="address_city"
+      [(ngModel)]="address.city"
+      placeholder="City"
+    />
+  </div>
+
+  <!-- State -->
+  <div class="form-group">
+    <label>State</label>
+    <input
+      type="text"
+      name="address_state"
+      [(ngModel)]="address.state"
+      placeholder="State"
+    />
+  </div>
+
+  <!-- Postal Code -->
+  <div class="form-group">
+    <label>Postal Code</label>
+    <input
+      type="text"
+      name="address_postalCode"
+      [(ngModel)]="address.postalCode"
+      placeholder="Postal Code"
+    />
+  </div>
+
+  <!-- Country -->
+  <div class="form-group">
+    <label>Country</label>
+    <input
+      type="text"
+      name="address_country"
+      [(ngModel)]="address.country"
+      placeholder="Country"
+    />
+  </div>
+</div>
+

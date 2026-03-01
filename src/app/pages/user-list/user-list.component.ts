@@ -31,61 +31,32 @@ export class UserListComponent {
     private userService: UserService,
     private router: Router,
   ) {
-    // this.userService.getUsers().subscribe(users => {
-    //   this.users = users.users;
-    // })
 
+    this.users$ = this.searchControl.valueChanges.pipe(
 
-    // const response$ = this.userService.getUsers().pipe(
-    //   map(res => res.users),
-    //   catchError(() => {
-    //     this.error$ = of('Failed to load users');
-    //     return of([]);
-    //   })
-    // );
+      startWith(''),                 // initial load
+      debounceTime(400),             // wait user typing
+      distinctUntilChanged(),        // avoid duplicate calls
 
-    // this.loading$ = response$.pipe(
-    //   map(() => false),
-    //   startWith(true)
-    // );
-
-    // -----------------------Using BehaviorSubject------------------------------
-    const response$ = this.userService.getUsers().pipe(
       tap(() => {
         this.loading$.next(true);
         this.error$.next('');
       }),
-      map(res => res.users),
-      catchError((error) => {
-        this.error$.next(`Failed to load users ${error}`);
-        return of([]);
-      }),
-      finalize(() => this.loading$.next(false))
+
+      switchMap((searchTerm) =>
+        this.userService.getUsers(searchTerm || '').pipe(
+          map(res => res.users),
+
+          catchError((error) => {
+            this.error$.next('Failed to load users');
+            return of([]);
+          }),
+
+          finalize(() => this.loading$.next(false))
+        )
+      )
     );
-
-
-    // ----------------------------Implement search----------------------------------------
-    // const response$ = this.searchControl.valueChanges.pipe(
-    //   startWith(''),
-    //   debounceTime(4000),
-    //   distinctUntilChanged(),
-    //   switchMap(searchTerm => {
-    //     this.loading$ = of(true);
-    //     return this.userService.getUsers(searchTerm || '');
-    //   }),
-    //   map(res => res.users),
-    //   tap(() => this.loading$ = of(false)),
-    //   catchError(() => {
-    //     this.loading$ = of(false);
-    //     this.error$ = of('Failed to load users');
-    //     return of([]);
-    //   }),
-    // );
-
-    this.users$ = response$;
-
   }
-
   navigateToDetails(id: number): void {
     this.router.navigate(['/user', id]);
   }

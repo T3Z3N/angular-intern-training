@@ -1,0 +1,51 @@
+.address-card {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f9fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.section-title {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+@media (min-width: 600px) {
+  .address-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .section-title {
+    grid-column: 1 / -1;
+  }
+}

@@ -47,3 +47,23 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-btn,
+.edit-btn {
+  border: none;
+  background: #eee;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #4caf50;
+  color: white;
+}

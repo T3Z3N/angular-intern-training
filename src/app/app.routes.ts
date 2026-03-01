@@ -11,6 +11,20 @@ export const routes: Routes = [
     children: [
       { path: '', component: UserListComponent },
       { path: 'user/:id', component: UserDetailComponent },
+      {
+        path: 'users/:id/edit-reactive-form',
+        loadComponent: () =>
+          import('./pages/user-edit-reactive/user-edit-reactive.component').then(
+            (m) => m.UserEditComponent,
+          ),
+      },
+      {
+        path: 'users/:id/edit-template-form',
+        loadComponent: () =>
+          import('./pages/user-edit-template/user-edit-template.component').then(
+            (m) => m.UserEditNormalComponent,
+          ),
+      },
       { path: 'concepts', component: ConceptsComponent },
     ],
   },

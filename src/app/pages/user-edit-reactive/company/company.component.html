@@ -1,0 +1,30 @@
+<div class="company-card" [formGroup]="group">
+  <h3>Company Information</h3>
+
+  <!-- Company Name -->
+  <div class="form-group">
+    <label for="companyName">Company Name</label>
+    <input id="companyName" type="text" formControlName="name" />
+    <small *ngIf="f['name'].touched && f['name'].invalid">
+      Company name is required
+    </small>
+  </div>
+
+  <!-- Department -->
+  <div class="form-group">
+    <label for="department">Department</label>
+    <input id="department" type="text" formControlName="department" />
+    <small *ngIf="f['department'].touched && f['department'].invalid">
+      Department is required
+    </small>
+  </div>
+
+  <!-- Title -->
+  <div class="form-group">
+    <label for="title">Job Title</label>
+    <input id="title" type="text" formControlName="title" />
+    <small *ngIf="f['title'].touched && f['title'].invalid">
+      Job title is required
+    </small>
+  </div>
+</div>
