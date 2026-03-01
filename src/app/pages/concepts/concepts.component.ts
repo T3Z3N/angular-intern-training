@@ -78,5 +78,42 @@ export class ConceptsComponent {
 
       example: `<div *ngFor="let user of users"></div>`,
     },
+    {
+      title: '🧠 Reactive Forms',
+      description: 'Model-driven form approach using FormGroup & FormControl',
+
+      why: 'Better for complex forms, dynamic validation & enterprise apps',
+
+      file: 'user-edit.component.ts',
+
+      lifecycle: 'Form initialized inside ngOnInit()',
+
+      example: `this.form = this.fb.nonNullable.group({
+      firstName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      address: this.fb.nonNullable.group({
+        city: [''],
+        country: ['']
+      })
+    });`
+    },
+
+    {
+      title: '📝 Template Forms',
+      description: 'Template-driven approach using ngModel',
+
+      why: 'Simple forms, quick setup, less boilerplate',
+
+      file: 'user-edit-normal.component.ts',
+
+      lifecycle: 'Form created automatically by Angular template',
+
+      example: `<input
+      name="firstName"
+      [(ngModel)]="user.firstName"
+      required
+      #firstNameModel="ngModel"
+    />`
+    }
   ];
 }
