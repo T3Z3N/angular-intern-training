@@ -1,7 +1,34 @@
-<div *ngIf="loading" class="loading">Loading user...</div>
+<!-- <div *ngIf="loading" class="loading">Loading user...</div> -->
+<!-- <div *ngIf="loading$ | async">Loading...</div> -->
+<div *ngIf="!(user$ | async); else userBlock">Loading async..</div>
 
-<div *ngIf="user" class="profile-card">
-  <!-- TOP BAR -->
+
+<ng-template #userBlock>
+  <div *ngIf="user$ | async as user">
+    <div *ngIf="user" class="profile-card">
+      <div class="top-bar">
+        <button class="back-btn" (click)="goBack()">← Back</button>
+      </div>
+    
+      <img [src]="user.image" class="profile-img" />
+    
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+    
+      <p class="role">Occupation: {{ user.company?.title }}</p>
+      <p class="role">Company: {{ user.company?.name }}</p>
+    
+      <div class="details">
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <p><strong>Address:</strong> {{ user.address | address }}</p>
+        <p><strong>Salary:</strong> {{ user.id * 25000 | salary }}</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<!-- <div *ngIf="user" class="profile-card">
   <div class="top-bar">
     <button class="back-btn" (click)="goBack()">← Back</button>
   </div>
@@ -19,4 +46,8 @@
     <p><strong>Address:</strong> {{ user.address | address }}</p>
     <p><strong>Salary:</strong> {{ user.id * 25000 | salary }}</p>
   </div>
-</div>
+</div> -->
+
+
+
+
