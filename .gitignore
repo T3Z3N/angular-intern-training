@@ -27,6 +27,7 @@ yarn-error.log
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/PROJECT.md
+!.vscode/Reactive_vs_Template_Forms.pptx
 .history/*
 
 # Miscellaneous
